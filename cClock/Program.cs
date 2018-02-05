@@ -9,37 +9,45 @@ namespace cClock
     class Program
     {
         static void Main(string[] args)
-        {
-            //debug console (first check if its correctly startups
-            Console.WriteLine("Iam doing something!");
-
+        {            
             //the NOT analogue clock heheh
-            AnaClock clock;
-            clock = new AnaClock();
-            Console.WriteLine(clock.Time());
+            AnaClock clock = new AnaClock();
 
-            //Just to keep console open till I want it closed ;)
-            Console.ReadKey();
+            while (true)
+            {
+                clock.SetTime();
+                Console.Write(clock.Time);
+
+
+                System.Threading.Thread.Sleep(1000);
+            }
         }
     }
 
     class AnaClock
     {
-        public AnaClock()
+        // public accessable string with the last set time
+        public string Time { get; set; }
+        private int _width;
+        private int _heigth;
+
+        //Function to set the current time in the above string
+        public void SetTime()
         {
-            this.time = GetTime;
-        }
-        
-        private string time;
-        public string GetTime
-        {
-            get { return DateTime.Now.ToLongTimeString(); }
-            set { time = value; }
+            this.Time = DateTime.Now.ToLongTimeString();
         }
 
-        public string Time()
+        public 
+        
+        public int TimeCircle()
         {
-            return GetTime;
+            int wWidth = Console.WindowWidth / 2;
+            int wHeigth = Console.WindowHeight / 2;
+            int minutes = DateTime.Now.Minute;
+
+            return minutes;
         }
     }
+
+
 }
